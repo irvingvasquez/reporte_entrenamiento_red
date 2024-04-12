@@ -1,0 +1,155 @@
+\documentclass[11pt,twoside,letterpaper]{article}
+%NOTE: This report format is 
+
+\newcommand{\reporttitle}{Reporte de entrenamiento...}
+\newcommand{\reportauthorOne}{Nombre del Estudiante o estudiantes}
+\newcommand{\cidOne}{your id number}
+\newcommand{\reportauthorTwo}{Nombre del Asesor}
+\newcommand{\cidTwo}{your id number}
+\newcommand{\reporttype}{Coursework}
+\bibliographystyle{plain}
+
+% include files that load packages and define macros
+\input{includes} % various packages needed for maths etc.
+\input{notation} % short-hand notation and macros
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% front page
+\input{titlepage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% table of content
+%If a table of content is needed, simply uncomment the following lines
+%\tableofcontents
+%\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Main document
+%\section*{Note:}
+%\emph{Este documento es la plantilla para el reporte de los experimentos. No modificar el original. Se debe hacer una copia en su propio repositorio.}
+\section{Resumen del experimento}
+
+\subsection{Problemática general}
+
+\emph{Proveer una descripción general del problema. Usar ecuaciones en caso de que exista un modelo matemático que lo defina. El problema debe estar acotado al experimento no a la tesis completa.}
+
+Ejemplo: Clasificar imágenes de perros y gatos.
+
+\subsection{Arquitectura de la red}
+
+\emph{Describir la arquitectura de la red.}
+
+\subsection{Preguntas de investigación}
+
+\emph{Escribir la o las preguntas de investigación que se desean resolver. En caso de existir mas de una éstas se deben listar a continuación.}
+
+%¿La red neuronal puede clasificar puentes?%Escribir la o las preguntas de investigación que se desean resolver
+
+\begin{description}
+\item [Pregunta 1:] ¿Cuáles son los hiperámetros que permiten alcanzar....?. 
+\item [Pregunta 2:] Escribir la pregunta de investigación.
+\end{description}
+
+%\subsubsection*{Question 1:}
+%¿El puente está completo?
+
+%\subsubsection*{Question 2:  \label{Q2}}
+%¿El puente tiene piezas faltantes?
+
+\subsection{Hipótesis}
+
+\emph{Poner la hipótesis como una relación de dos variables. Usualmente en aprendizaje profundo suponemos que cierta arquitectura o ciertos parámetros mejorarán el desempeño en una tarea determinada.}
+
+Si utilizamos una búsqueda por rejilla de los hiperámetros podemos alcanzar un rendimiento de...
+
+\section{Diseño de experimento (optimización de hiper-parámetros)}
+
+\emph{En esta sección se describe la optimización de hyperparámetros.}
+
+\subsection{Métricas de evaluación}
+
+\emph{Describir las métricas que se van a usar para comparar la efectividad de cada tratamieto en cada sujeto.}
+
+\begin{itemize}
+    \item Exactitud (Accuracy): Mide .....
+    \item Recuerdo (Recall): Mide... \\
+    \vdots
+    \item Métrica N: Mide ...
+\end{itemize}
+
+\subsection{Factores primarios}
+
+\emph{Son los factores que al combinarse determinan el desempeño de un tratamiento.}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Factor}     & \textbf{Valores posibles}   \\ \hline
+Learning rate & $1 \times 10^{-3}$,  $1 \times 10^{-4}$    \\ \hline
+Optimizador & Adam, SGD    \\ \hline
+Tamaño de lote & 64, 32 \\ \hline
+Semillas & A, B \\ \hline
+\end{tabular}
+\caption{Factores primarios}
+\end{table}
+
+\subsection{Factores ortogonales}
+
+\emph{Los factores ortogonales son independientes de los otros factores definidos.}
+
+Para disminuir la complejidad del experimento, consideraremos como factores ortogonales: batch size y número de épocas. Si bien tienen cierta influencia en el aprendizaje, ésta es menor que los demás parámetros. En un experimento aislado se determinan los mejores valores. 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Factor}     & \textbf{Valor}   \\ \hline
+Épocas     & 50    \\ \hline
+Inicialización & Aleatoria \\ \hline
+\end{tabular}
+\caption{Factores ortogonales}
+\end{table}
+
+\subsection{Grid search u otra búsqueda}
+
+\emph{Nota: En este ejemplo se pone grid search pero en caso de usar otro método de optimización se debe reemplazar esta sección por el otro método, e.g. optimización evolutiva.}
+
+\emph{Primero se deben definir que factores se van a usar asi como los valores que tomará cada factor. Una vez determinados se hace la combinación completa en la tabla.}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+ID                    & Factor 1 & $\dots$ & Factor N \\ \hline
+1                     &          &                      &           \\ \hline
+$\vdots$ &          &                      &               \\ \hline
+\end{tabular}
+\caption{Rejilla de búsqueda (Grid search).}
+\end{table}
+
+\section{Requerimientos del experimento}
+
+\emph{Definir que requerimientos son necesarios para llevar a cabo el experimento. Al menos se debe especificar: requerimiento de procesamiento (GPU, CPU, NPU), requerimiento espacial (RAM), requerimiento temporal (tiempo de entrenamiento esperado para todo el experimento).}
+
+
+\section{Análisis de resultados}
+
+\emph{¿Se comprobó la hipótesis?}
+
+\emph{¿Se realizó el experimento de acuerdo a los requerimientos?}
+
+\emph{De no finalizar el experimento ¿Por qué no se finalizó?}
+
+
+
+\newpage
+\bibliography{mybib}
+
+
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
